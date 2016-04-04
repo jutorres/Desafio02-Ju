@@ -49,6 +49,7 @@ public class Repository {
 	}
 	
 	public int getBandNumberList() {
+		fileFilterList.;
 		return 0;
 	}
 }	

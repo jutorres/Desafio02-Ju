@@ -17,11 +17,6 @@ public class FileFilter {
 		return bandNumber;
 	}
 	
-	public int addBandNumber() {
-		int result =+ bandNumber;
-		return result;
-	}
-
 	public String toString() {
 		return "lineFile = " + lineFile + " " + "lineBand + " + bandNumber + "\n";
 	}
