@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import data.BrowserSisop;
+import data.FileFilter;
 import data.Ip;
 
 public class ReaderMethods {
@@ -13,10 +14,12 @@ public class ReaderMethods {
 	String bigPart;
 	String secondIp;
 	String searchFile;
-	String searchBanda;
+	String searchBand;
 	String searchBrowser;
+	String bandString;
+	int bandValue;
 	
-	File file = new File("C:/dev/Workspaces/Workspace-Eclipse-Mars2/Desafio_Java2/access_test.log");
+	File file = new File("C:/dev/Workspaces/Workspace-Eclipse-Mars2/Desafio02-Ju/access_test.log");
 
 	public Repository readFile() throws IOException {
 		Repository repository = new Repository();
@@ -35,8 +38,15 @@ public class ReaderMethods {
 					bigPart = parts[1];
 					String[] subParts = bigPart.split("\"");
 					searchFile = subParts[1];
-					searchBanda = subParts[2];
+					searchBand = subParts[2];
+					String[] bandSeparator = searchBand.split(" ");
+					bandString = bandSeparator[2].replaceAll("-", "0");
+					bandValue = Integer.parseInt(bandString);
 					searchBrowser = subParts[5];
+					
+					FileFilter fileFilter = new FileFilter(searchFile, bandValue);
+					repository.add(fileFilter);
+					
 					BrowserSisop browser = new BrowserSisop(searchBrowser);
 					repository.add(browser);
 				}
