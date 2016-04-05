@@ -6,7 +6,13 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import data.BrowserSisop;
-import data.FileFilter;
+import data.FileFilterCss;
+import data.FileFilterCsv;
+import data.FileFilterGif;
+import data.FileFilterJpg;
+import data.FileFilterJs;
+import data.FileFilterPng;
+import data.FileFilterTxt;
 import data.Ip;
 
 public class ReaderMethods {
@@ -18,6 +24,7 @@ public class ReaderMethods {
 	String searchBrowser;
 	String bandString;
 	int bandValue;
+	
 	
 	File file = new File("C:/dev/Workspaces/Workspace-Eclipse-Mars2/Desafio02-Ju/access_test.log");
 
@@ -44,8 +51,30 @@ public class ReaderMethods {
 					bandValue = Integer.parseInt(bandString);
 					searchBrowser = subParts[5];
 					
-					FileFilter fileFilter = new FileFilter(searchFile, bandValue);
-					repository.add(fileFilter);
+					
+					if (searchFile.contains(".png")) {
+						FileFilterPng fileFilterPng = new FileFilterPng(bandValue);
+						repository.add(fileFilterPng);
+					} else if (searchFile.contains(".gif")) {
+						FileFilterGif fileFilterGif = new FileFilterGif(bandValue);
+						repository.add(fileFilterGif);
+					} else if (searchFile.contains(".css")) {
+						FileFilterCss fileFilterCss = new FileFilterCss(bandValue);
+						repository.add(fileFilterCss);
+					} else if (searchFile.contains(".csv")) {
+						FileFilterCsv fileFilterCsv = new FileFilterCsv(bandValue);
+						repository.add(fileFilterCsv);
+					} else if (searchFile.contains(".jpg")) {
+						FileFilterJpg fileFilterJpg = new FileFilterJpg(bandValue);
+						repository.add(fileFilterJpg);
+					} else if (searchFile.contains(".js")) {
+						FileFilterJs fileFilterJs = new FileFilterJs(bandValue);
+						repository.add(fileFilterJs);
+					} else {
+						FileFilterTxt fileFilterTxt = new FileFilterTxt(bandValue);
+						repository.add(fileFilterTxt);
+					}
+					
 					
 					BrowserSisop browser = new BrowserSisop(searchBrowser);
 					repository.add(browser);
