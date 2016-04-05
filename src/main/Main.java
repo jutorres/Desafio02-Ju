@@ -2,9 +2,12 @@ package main;
 
 import java.io.IOException;
 
+import data.Ip;
 import lists.BrowserList;
 import lists.FileList;
 import lists.SisopList;
+import lists.TimeHigherList;
+import reader.Chronometer;
 import reader.ReaderMethods;
 import reader.Repository;
 
@@ -17,8 +20,10 @@ public class Main {
 		 BrowserList bl = new BrowserList();
 		 SisopList sl = new SisopList();
 		 FileList fl = new FileList();
+		 Chronometer c = new Chronometer();
+		 TimeHigherList thl = new TimeHigherList();
 		 
-//		 System.out.println(repository.getIpList().toString());
+		 c.begin();
 //		 System.out.println(repository.getBrowserList().toString());
 //		 System.out.println("Total de linhas do arquivo = " + repository.getCountBrowserList());
 //		 
@@ -51,5 +56,9 @@ public class Main {
 //		 System.out.println("Total de linhas do arquivo = " + repository.getCountFileFilterListTxt());
 		 
 		 System.out.println("Arquivos em ordem decrescente = " + fl.fileListOrder());
+		 System.out.println("Visits = " + r.getCount());
+		 System.out.println("Duração = " + thl.listDuration());
+		 
+		 c.close();
 	}
 }

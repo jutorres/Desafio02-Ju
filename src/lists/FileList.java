@@ -8,7 +8,6 @@ import reader.Repository;
 
 public class FileList {
 	TreeMap<String, Integer> fileList;
-	FileFilterPng bandPng;
 	
 	public FileList() {
 		this.fileList = new TreeMap<String, Integer>();
@@ -18,7 +17,7 @@ public class FileList {
 		int sum = 0;
 		for(int i = 0; i < Repository.fileFilterListPng.size(); i++) {
 			
-			sum =+ Repository.fileFilterListPng.get(i).getBandNumber();
+			sum += Repository.fileFilterListPng.get(i).getBandNumber();
 		}
 		return sum;
 	}
@@ -27,7 +26,7 @@ public class FileList {
 		int sum = 0;
 		for(int i = 0; i < Repository.fileFilterListJpg.size(); i++) {
 			
-			sum =+ Repository.fileFilterListJpg.get(i).getBandNumber();
+			sum += Repository.fileFilterListJpg.get(i).getBandNumber();
 		}
 		return sum;
 	}
@@ -36,7 +35,7 @@ public class FileList {
 		int sum = 0;
 		for(int i = 0; i < Repository.fileFilterListCss.size(); i++) {
 			
-			sum =+ Repository.fileFilterListCss.get(i).getBandNumber();
+			sum += Repository.fileFilterListCss.get(i).getBandNumber();
 		}
 		return sum;
 	}
@@ -45,7 +44,7 @@ public class FileList {
 		int sum = 0;
 		for(int i = 0; i < Repository.fileFilterListCsv.size(); i++) {
 			
-			sum =+ Repository.fileFilterListCsv.get(i).getBandNumber();
+			sum += Repository.fileFilterListCsv.get(i).getBandNumber();
 		}
 		return sum;
 	}
@@ -54,7 +53,7 @@ public class FileList {
 		int sum = 0;
 		for(int i = 0; i < Repository.fileFilterListGif.size(); i++) {
 			
-			sum =+ Repository.fileFilterListGif.get(i).getBandNumber();
+			sum += Repository.fileFilterListGif.get(i).getBandNumber();
 		}
 		return sum;
 	}
@@ -63,7 +62,7 @@ public class FileList {
 		int sum = 0;
 		for(int i = 0; i < Repository.fileFilterListJs.size(); i++) {
 			
-			sum =+ Repository.fileFilterListJs.get(i).getBandNumber();
+			sum += Repository.fileFilterListJs.get(i).getBandNumber();
 		}
 		return sum;
 	}
@@ -72,7 +71,7 @@ public class FileList {
 		int sum = 0;
 		for(int i = 0; i < Repository.fileFilterListTxt.size(); i++) {
 			
-			sum =+ Repository.fileFilterListTxt.get(i).getBandNumber();
+			sum += Repository.fileFilterListTxt.get(i).getBandNumber();
 		}
 		return sum;
 	}

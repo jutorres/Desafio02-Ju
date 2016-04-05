@@ -4,6 +4,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Locale;
 
 import data.BrowserSisop;
 import data.FileFilterCss;
@@ -23,10 +28,13 @@ public class ReaderMethods {
 	String searchBand;
 	String searchBrowser;
 	String bandString;
+	LocalDateTime dateNow;
 	int bandValue;
+	int count = 0;
+	private static HashMap<String, LocalDateTime> visits = new HashMap<String, LocalDateTime>();
 	
 	
-	File file = new File("C:/dev/Workspaces/Workspace-Eclipse-Mars2/Desafio02-Ju/access_test.log");
+	File file = new File("C:/dev/Workspaces/Workspace-Eclipse-Mars2/Desafio02-Ju/access.log");
 
 	public Repository readFile() throws IOException {
 		Repository repository = new Repository();
@@ -39,8 +47,30 @@ public class ReaderMethods {
 					
 					String[] ipPrincipal = ips.split(" - ");
 					secondIp = ipPrincipal[1];
-					Ip ip = new Ip(secondIp);
-					repository.add(ip);
+					if (ipPrincipal[1].contains(",")) {
+						String[] subIpPrincipal = ipPrincipal[1].split(",");
+						secondIp = subIpPrincipal[1];
+					}
+					String date = parts[1].substring(1, 21);
+					LocalDateTime dateNow = LocalDateTime.parse(date,DateTimeFormatter
+									  .ofPattern("dd/MMM/yyyy:HH:mm:ss")
+									  .withLocale(Locale.CANADA));
+					Ip ipTime = new Ip(dateNow);
+					repository.add(ipTime);
+					LocalDateTime firstAcess = visits.get(secondIp);
+							  
+					if (firstAcess == null) {
+						visits.put(secondIp, dateNow);
+						count++;
+					} else {
+								   
+						Duration d = Duration.between(firstAcess, dateNow);
+								   
+						if (d.toMillis() > 1800000) {
+							visits.put(secondIp, dateNow);
+							count++;
+						}
+					}
 					
 					bigPart = parts[1];
 					String[] subParts = bigPart.split("\"");
@@ -49,7 +79,11 @@ public class ReaderMethods {
 					String[] bandSeparator = searchBand.split(" ");
 					bandString = bandSeparator[2].replaceAll("-", "0");
 					bandValue = Integer.parseInt(bandString);
-					searchBrowser = subParts[5];
+					try {
+						searchBrowser = subParts[5];
+					} catch (Exception e) {
+						
+					}
 					
 					
 					if (searchFile.contains(".png")) {
@@ -80,5 +114,10 @@ public class ReaderMethods {
 					repository.add(browser);
 				}
 				return repository;
+	}
+	
+	public int getCount() {
+		
+		return count;
 	}
 }

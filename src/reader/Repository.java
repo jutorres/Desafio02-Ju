@@ -13,7 +13,7 @@ import data.FileFilterTxt;
 import data.Ip;
 
 public class Repository {
-	private ArrayList<Ip> ipList;
+	public static ArrayList<Ip> timeList;
 	public static ArrayList<BrowserSisop> browserSisopList;
 	public static ArrayList<FileFilterPng> fileFilterListPng;
 	public static ArrayList<FileFilterGif> fileFilterListGif;
@@ -24,7 +24,6 @@ public class Repository {
 	public static ArrayList<FileFilterTxt> fileFilterListTxt;
 	
 	public Repository() {
-		this.ipList = new ArrayList<Ip>();
 		Repository.browserSisopList = new ArrayList<BrowserSisop>();
 		Repository.fileFilterListPng = new ArrayList<FileFilterPng>();
 		Repository.fileFilterListGif = new ArrayList<FileFilterGif>();
@@ -33,12 +32,9 @@ public class Repository {
 		Repository.fileFilterListJpg = new ArrayList<FileFilterJpg>();
 		Repository.fileFilterListJs = new ArrayList<FileFilterJs>();
 		Repository.fileFilterListTxt = new ArrayList<FileFilterTxt>();
+		Repository.timeList = new ArrayList<Ip>();
 	}
 
-	public ArrayList<Ip> getIpList() {
-		return ipList;
-	}
-	
 	public ArrayList<BrowserSisop> getBrowserSisopList() {
 		return browserSisopList;
 	}
@@ -70,9 +66,9 @@ public class Repository {
 	public ArrayList<FileFilterTxt> getFileFilterListTxt() {
 		return fileFilterListTxt;
 	}
-
-	public void add(Ip ip) {
-		ipList.add(ip);
+	
+	public ArrayList<Ip> getTimeList() {
+		return timeList;
 	}
 	
 	public void add(BrowserSisop browser) {
@@ -105,6 +101,10 @@ public class Repository {
 	
 	public void add(FileFilterTxt fileFilter) {
 		fileFilterListTxt.add(fileFilter);
+	}
+	
+	public void add(Ip ipTime) {
+		timeList.add(ipTime);
 	}
 	
 	public int getCountBrowserList() {

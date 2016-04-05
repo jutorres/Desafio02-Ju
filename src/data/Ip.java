@@ -1,18 +1,36 @@
 package data;
 
+import java.time.LocalDateTime;
+
 public class Ip {
-	private String ip;
+	public String ip;
+	public LocalDateTime date;
 	
-	public Ip(String ip) {
+	
+	public Ip(String ip, LocalDateTime date) {
 		this.ip = ip;
+		this.date = date;
+	}
+	
+	public Ip(LocalDateTime date) {
+		this.date = date;
+	}
+	
+	public Ip() {
+		
 	}
 
 	public String getIp() {
 		return ip;
 	}
+	
+	public LocalDateTime getDate() {
+		return date;
+	}
+	
 
 	@Override
 	public String toString() {
-		return "Ip= " + ip + "\n";
+		return "IpList = " + ip + date + "\n";
 	}
 }
