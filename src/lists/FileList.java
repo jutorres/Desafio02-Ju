@@ -7,10 +7,10 @@ import data.FileFilterPng;
 import reader.Repository;
 
 public class FileList {
-	TreeMap<String, Integer> fileList;
+	TreeMap<Integer,String> fileList;
 	
 	public FileList() {
-		this.fileList = new TreeMap<String, Integer>();
+		this.fileList = new TreeMap<Integer,String>();
 	}
 	
 	public int getSumBandPng() {
@@ -76,15 +76,15 @@ public class FileList {
 		return sum;
 	}
 	
-	public TreeMap<String, Integer> fileListOrder () {
-		TreeMap <String, Integer> reverseList = new TreeMap <String, Integer> (Collections.reverseOrder());
-		reverseList.put(".png", getSumBandPng());
-		reverseList.put(".csv", getSumBandCsv());
-		reverseList.put(".css", getSumBandCss());
-		reverseList.put(".gif", getSumBandGif());
-		reverseList.put(".jpg", getSumBandJpg());
-		reverseList.put(".jpg", getSumBandJpg());
-		reverseList.put(".js", getSumBandJs());
+	public TreeMap<Integer,String> fileListOrder () {
+		TreeMap <Integer,String> reverseList = new TreeMap <Integer,String> (Collections.reverseOrder());
+		reverseList.put(getSumBandPng(), ".png");
+		reverseList.put(getSumBandCsv(), ".csv");
+		reverseList.put(getSumBandCss(), ".css");
+		reverseList.put(getSumBandGif(), ".gif");
+		reverseList.put(getSumBandJpg(), ".jpg");
+		reverseList.put(getSumBandJpg(), ".jpg");
+		reverseList.put(getSumBandJs(), ".js");
 
 		return reverseList;
 	}
