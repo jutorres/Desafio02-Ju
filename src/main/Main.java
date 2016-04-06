@@ -2,8 +2,6 @@ package main;
 
 import java.io.IOException;
 
-import data.Ip;
-import lists.BrowserList;
 import lists.FileList;
 import lists.SisopList;
 import lists.TimeHigherList;
@@ -17,7 +15,6 @@ public class Main {
 		 
 		 ReaderMethods r = new ReaderMethods();
 		 Repository repository = r.readFile();
-		 BrowserList bl = new BrowserList();
 		 SisopList sl = new SisopList();
 		 FileList fl = new FileList();
 		 Chronometer c = new Chronometer();
@@ -31,14 +28,14 @@ public class Main {
 //		 System.out.println("Chrome= " + bl.getCountChrome());
 //		 System.out.println("MSIE = " + bl.getCountMsie());
 //		 System.out.println("Firefox = " + bl.getCountFirefox());
-		 System.out.println("Browser em ordem decrescente = " + bl.listBrowserOrder());
+		 System.out.println("Browser em ordem decrescente = " + r.listBrowserOrder());
 //		 
 //		 System.out.println("Mac OS = " + sl.getCountMac());
 //		 System.out.println("Macintosh = " + sl.getCountMacintosh());
 //		 System.out.println("Windows NT = " + sl.getCountWindows());
 //		 System.out.println("Linux = " + sl.getCountLinux());
 //		 System.out.println("Android = " + sl.getCountAndroid());
-		 System.out.println("Browser em ordem crescente = " + sl.listSisopOrder());
+		 System.out.println("Sistemas operacionais em ordem crescente = " + sl.listSisopOrder());
 		 
 //		 System.out.println(repository.getFileFilterListPng().toString());
 //		 System.out.println("Total de linhas do arquivo = " + repository.getCountFileFilterListPng());

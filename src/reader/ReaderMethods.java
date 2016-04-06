@@ -7,8 +7,10 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.TreeMap;
 
 import data.BrowserSisop;
 import data.FileFilterCss;
@@ -31,6 +33,10 @@ public class ReaderMethods {
 	LocalDateTime dateNow;
 	int bandValue;
 	int count = 0;
+	int countFirefox = 0;
+	int countSafari = 0;
+	int countChrome = 0;
+	int countMsie = 0;
 	private static HashMap<String, LocalDateTime> visits = new HashMap<String, LocalDateTime>();
 	
 	
@@ -81,6 +87,21 @@ public class ReaderMethods {
 					bandValue = Integer.parseInt(bandString);
 					try {
 						searchBrowser = subParts[5];
+						if (searchBrowser.contains("Firefox")) {
+							countFirefox++;
+						}  
+						
+						if (searchBrowser.contains("Safari")){
+							countSafari++;
+						} 
+						
+						if (searchBrowser.contains("Chrome")){
+							countChrome++;
+						} 
+						
+						if (searchBrowser.contains("MSIE")){
+							countMsie++;
+						}
 					} catch (Exception e) {
 						
 					}
@@ -117,7 +138,31 @@ public class ReaderMethods {
 	}
 	
 	public int getCount() {
-		
 		return count;
+	}
+	
+	public int getCountFirefox() {
+		return countFirefox;
+	}
+	
+	public int getCountSafari() {
+		return countSafari;
+	}
+	
+	public int getCountChrome() {
+		return countChrome;
+	}
+	
+	public int getCountMsie() {
+		return countMsie;
+	}
+	
+	public TreeMap<Integer, String> listBrowserOrder () {
+		TreeMap <Integer, String> reverseList = new TreeMap <Integer, String> (Collections.reverseOrder());
+		reverseList.put(getCountFirefox(), "Firefox");
+		reverseList.put(getCountChrome(), "Chrome");
+		reverseList.put(getCountMsie(), "IE");
+		reverseList.put(getCountSafari(), "Safari");
+		return reverseList;
 	}
 }
